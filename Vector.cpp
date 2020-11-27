@@ -1,7 +1,6 @@
 #include "Vector.h"
 #include <iostream>
 
-//Copy  Constructor
 Vector::Vector(const Vector& theOther)
 {
     elementNum = theOther.elementNum;
@@ -12,7 +11,7 @@ Vector::Vector(const Vector& theOther)
     }
 }
 
-// global function for printing vector data
+
 std::ostream& operator<<(std::ostream& os, const Vector& v)
 {
     for (unsigned int i = 0; i < v.elementNum; i++)
@@ -22,7 +21,7 @@ std::ostream& operator<<(std::ostream& os, const Vector& v)
     return os;
 }
 
-// clears the array
+
 void Vector::clear()
 {
     elementNum = 0;
@@ -30,8 +29,7 @@ void Vector::clear()
     pData = NULL;
 }
 
-// erases (deletes) the array element with the given index;
-// valid indices: from 0 to size-1
+
 void Vector::erase(unsigned int position)
 {
     int* TmpPtr = new int[elementNum - 1];
@@ -50,23 +48,19 @@ void Vector::erase(unsigned int position)
     pData = TmpPtr;
 }
 
-// returns the array element with the given index, making possible to modify the element;
-// valid indices: between 0 and size()-1
 int& Vector::at(unsigned int position)
 {
     return pData[position];
 }
 
-// returns the array element with the given index, without possibility to modify the element (see const keyword)
-// valid indices: between 0 and size()-1
+
 const int& Vector::at(unsigned int position) const
 {
     const int& pos = pData[position];
     return pos;
 }
 
-// inserts a new element into a place with the given index;
-// if the index exceeds the array size, then the size should be increased, and the empty places should be filled with 0 (zero)
+
 bool Vector::insert(unsigned int position, int element)
 {
     int* ptr;
@@ -108,7 +102,7 @@ bool Vector::insert(unsigned int position, int element)
     return true;
 }
 
-// Operator= Overloading
+
 const Vector& Vector::operator=(const Vector& theOther)
 {
     elementNum = theOther.elementNum;
@@ -121,20 +115,20 @@ const Vector& Vector::operator=(const Vector& theOther)
     return *this;
 }
 
-// operator[] Overloading
+
 int& Vector::operator[](unsigned int position)
 {
     return pData[position];
 }
 
-// constant operator[] Overloading 
+
 const int& Vector::operator[](unsigned int position) const
 {
     const int& SubOpr = pData[position];
     return SubOpr;
 }
 
-//SORTING FUNCTION (HomeWork)
+
 //Sorting the Vector in Ascending order
 void Vector::sort()
 {
